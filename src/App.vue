@@ -1,26 +1,46 @@
 <template>
-  <v-app>
-    <v-content>
-      <router-view/>
-    </v-content>
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
+   <v-app>
+    <!-- <v-navigation-drawer
       fixed
+      v-model="drawer"
       app
     >
-      <v-list>
-        <v-list-tile @click="right = !right">
+      <v-list dense>
+        <v-list-tile @click="">
           <v-list-tile-action>
-            <v-icon>compare_arrows</v-icon>
+            <v-icon>home</v-icon>
           </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
+          <v-list-tile-content>
+            <v-list-tile-title>Home</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile @click="">
+          <v-list-tile-action>
+            <v-icon>contact_mail</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Contact</v-list-tile-title>
+          </v-list-tile-content>
         </v-list-tile>
       </v-list>
-    </v-navigation-drawer>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; 2017</span>
+    </v-navigation-drawer> -->
+    <v-toolbar color="indigo" dark fixed app>
+      <!-- <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon> -->
+      <v-toolbar-title style="cursor:pointer">
+        <router-link to="/">Seller Engine</router-link>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-badge left>
+      <span slot="badge">{{nilai}}</span>
+      <v-icon large color="grey lighten-1">shopping_cart</v-icon>
+    </v-badge>
+      <v-btn flat>Seller</v-btn>
+    </v-toolbar>
+    <v-content>
+     <router-view></router-view>
+    </v-content>
+    <v-footer color="indigo" app>
+      <span class="white--text">&copy; 2018</span>
     </v-footer>
   </v-app>
 </template>
@@ -29,19 +49,18 @@
 export default {
   data () {
     return {
-      clipped: false,
       drawer: true,
-      fixed: false,
-      items: [{
-        icon: 'bubble_chart',
-        title: 'Inspire'
-      }],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      nilai: 0
     }
-  },
-  name: 'App'
+  }
 }
 </script>
+
+<style scoped>
+  a {
+    text-decoration: none;
+    color: white;
+  }
+</style>
+
+
