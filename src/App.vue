@@ -1,38 +1,36 @@
 <template>
    <v-app>
-    <!-- <v-navigation-drawer
+    <v-navigation-drawer
       fixed
-      v-model="drawer"
+      clipped
       app
+      v-model="drawer" 
+      right
     >
       <v-list dense>
-        <v-list-tile @click="">
-          <v-list-tile-action>
-            <v-icon>home</v-icon>
-          </v-list-tile-action>
+        <v-list-tile>
+          <v-list-tile-title>
+            <h2>Keranjang</h2>
+          </v-list-tile-title>
+        </v-list-tile>
+        <v-list-tile v-for="item in cart" :key="item.id">
           <v-list-tile-content>
-            <v-list-tile-title>Home</v-list-tile-title>
+            <v-list-tile-title>{{item.namaProduk}}</v-list-tile-title>
+            {{item.harga}}
+            <p>Total : {{total = item.harga + total}}</p>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="">
-          <v-list-tile-action>
-            <v-icon>contact_mail</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Contact</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+        <hr>
       </v-list>
-    </v-navigation-drawer> -->
-    <v-toolbar color="indigo" dark fixed app>
-      <!-- <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon> -->
+    </v-navigation-drawer>
+    <v-toolbar color="indigo" app fixed clipped-right>
       <v-toolbar-title style="cursor:pointer">
         <router-link to="/">Seller Engine</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-badge left>
-      <span slot="badge">{{nilai}}</span>
-      <v-icon large color="grey lighten-1">shopping_cart</v-icon>
+      <span slot="badge">{{cart.length}}</span>
+      <v-icon color="grey lighten-1" @click.stop="drawer = !drawer" style="cursor:pointer">shopping_cart</v-icon>
     </v-badge>
       <v-btn flat>Seller</v-btn>
     </v-toolbar>
@@ -49,8 +47,14 @@
 export default {
   data () {
     return {
-      drawer: true,
-      nilai: 0
+      drawer: false,
+      nilai: 0,
+      total: 0
+    }
+  },
+  computed: {
+    cart () {
+      return this.$store.getters.cart
     }
   }
 }

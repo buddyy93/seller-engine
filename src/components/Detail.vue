@@ -4,7 +4,7 @@
       <v-flex xs12 md6 offset-md3>
         <v-card>
           <v-card-media>
-            <img  style="object-fit:cover" src="https://dummyimage.com/vga" height="300">
+            <img style="object-fit:cover" src="https://dummyimage.com/vga" height="300">
           </v-card-media>
           <v-card-title>
             Nama Produk
